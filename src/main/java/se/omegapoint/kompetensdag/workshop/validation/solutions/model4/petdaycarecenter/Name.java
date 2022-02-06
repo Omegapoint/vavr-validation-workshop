@@ -16,8 +16,8 @@ public class Name {
 
     public static Validation<String, Name> validate(final String name) {
         return ValidationUtils.notBlank(name, "dayCareName")
-                .flatMap(orgNum -> ValidationUtils.maxLength(orgNum, "dayCareName", 100))
-                .flatMap(orgNum -> ValidationUtils.matchesPattern(orgNum, "dayCareName", "^[a-zA-Z]+( [a-zA-Z]+)*$"))
+                .flatMap(validName -> ValidationUtils.maxLength(validName, "dayCareName", 100))
+                .flatMap(validName -> ValidationUtils.matchesPattern(validName, "dayCareName", "^[a-zA-Z]+( [a-zA-Z]+)*$"))
                 .map(Name::new);
     }
 

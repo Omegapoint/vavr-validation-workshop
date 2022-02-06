@@ -1,5 +1,8 @@
 package se.omegapoint.kompetensdag.workshop.validation.solutions.model4.accountinformation;
 
+import io.vavr.control.Validation;
+import se.omegapoint.kompetensdag.workshop.validation.solutions.model4.ValidationUtils;
+
 import java.util.Objects;
 
 import static org.apache.commons.lang3.Validate.notBlank;
@@ -9,6 +12,13 @@ public class ClearingNumber {
 
     private ClearingNumber(final String value) {
         this.value = notBlank(value);
+    }
+
+    public static Validation<String, ClearingNumber> validate(final String clearingNumber) {
+        return ValidationUtils.notBlank(clearingNumber, "clearingNumber")
+                .flatMap(clearNum -> ValidationUtils.exactLength(clearNum, "clearingNumber", 4))
+                .flatMap(clearNum -> ValidationUtils.matchesPattern(clearNum, "clearingNumber", "^\\d{4}$"))
+                .map(ClearingNumber::new);
     }
 
     @Override

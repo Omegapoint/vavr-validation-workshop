@@ -26,7 +26,7 @@ public class PetDaycareCenter {
                 Customer.validateMultiple(input.customers)
         )
                 .ap(PetDaycareCenter::new)
-                .mapError(errorMessages -> StringUtils.join(errorMessages, ", "));
+                .mapError(errorMessages -> StringUtils.join(errorMessages, ",\n"));
     }
 
     @Override

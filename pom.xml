@@ -6,7 +6,7 @@
 
     <groupId>se.omegapoint.kompetensdag.workshop.validation</groupId>
     <artifactId>vavr-validation-workshop</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <properties>
         <java.version>8</java.version>

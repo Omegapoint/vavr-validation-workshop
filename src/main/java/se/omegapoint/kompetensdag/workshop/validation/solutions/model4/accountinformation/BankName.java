@@ -1,5 +1,8 @@
 package se.omegapoint.kompetensdag.workshop.validation.solutions.model4.accountinformation;
 
+import io.vavr.control.Validation;
+import se.omegapoint.kompetensdag.workshop.validation.solutions.model4.ValidationUtils;
+
 import java.util.Objects;
 
 import static org.apache.commons.lang3.Validate.notBlank;
@@ -9,6 +12,13 @@ public class BankName {
 
     private BankName(final String value) {
         this.value = notBlank(value);
+    }
+
+    public static Validation<String, BankName> validate(final String bankName) {
+        return ValidationUtils.notBlank(bankName, "bankName")
+                .flatMap(validName -> ValidationUtils.maxLength(validName, "bankName", 150))
+                .flatMap(validName -> ValidationUtils.matchesPattern(validName, "bankName", "^[a-zA-Z]+( [a-zA-Z]+)*$"))
+                .map(BankName::new);
     }
 
     @Override
