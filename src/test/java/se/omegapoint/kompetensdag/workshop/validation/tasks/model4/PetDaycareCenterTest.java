@@ -11,10 +11,10 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-class PetDaycareCenterTest {
+public class PetDaycareCenterTest {
 
     @Test
-    void should_be_valid() {
+    public void should_be_valid() {
         final PetDaycareCenter input = invalidInputModel();
 
         assertDoesNotThrow(() -> mapToDomain(input));

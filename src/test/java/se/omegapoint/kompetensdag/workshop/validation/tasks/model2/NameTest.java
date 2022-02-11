@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-class NameTest {
+public class NameTest {
     @Test
-    void should_be_valid() {
+    public void should_be_valid() {
         assertDoesNotThrow(() -> Stream.of("1234", "", "åäö", "Valid Name")
                 .map(Name::new)
                 .collect(Collectors.toList()));

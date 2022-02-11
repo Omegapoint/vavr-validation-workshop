@@ -1,0 +1,34 @@
+package se.omegapoint.kompetensdag.workshop.validation.presentation.example1;
+
+import java.util.Objects;
+
+import static org.apache.commons.lang3.Validate.isTrue;
+import static org.apache.commons.lang3.Validate.matchesPattern;
+import static org.apache.commons.lang3.Validate.notBlank;
+
+public class Person {
+    public final String name;
+    public final int age;
+
+    public Person(final String name, final int age) {
+        notBlank(name);
+        isTrue(name.length() <= 100);
+        matchesPattern(name, "^[a-zA-Z]+( [a-zA-Z]+)*$");
+        isTrue(0 <= age && age <= 150);
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        final Person person = (Person) o;
+        return Objects.equals(name, person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+}

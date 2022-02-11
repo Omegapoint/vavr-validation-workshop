@@ -9,10 +9,10 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-class PersonTest {
+public class PersonTest {
 
     @Test
-    void should_be_valid() {
+    public void should_be_valid() {
         assertDoesNotThrow(() -> input().people.stream()
                 .map(pair -> new Person(pair.getLeft(), pair.getRight()))
                 .collect(Collectors.toList()));
